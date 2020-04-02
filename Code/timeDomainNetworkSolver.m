@@ -1,9 +1,17 @@
 function [V] = timeDomainNetworkSolver(timeStep, maxTimeSteps, inputSignal, Cmatrix, G, doPlot)
     
+    global I_n;
+    global question_5;
+
     V = zeros(7, maxTimeSteps);
     F = zeros(7, maxTimeSteps);
     
     F(1, :) = inputSignal;
+    
+    if question_5
+        F(3, :) = -I_n;
+        F(5, :) = -I_n;
+    end
     
     if doPlot
         figure;
